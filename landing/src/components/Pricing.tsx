@@ -79,7 +79,7 @@ export function Pricing() {
               <ul>
                 {t.features.map((f, j) => <li key={j}>{f}</li>)}
               </ul>
-              <a href="#open" className="btn rate-cta">
+              <a href="https://lk.get-due.com/register" className="btn rate-cta">
                 {t.cta} <span className="arrow">→</span>
               </a>
             </motion.div>

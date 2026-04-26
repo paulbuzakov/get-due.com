@@ -24,8 +24,8 @@ export function Masthead() {
           <a href="#statement">Statement</a>
           <a href="#rates">Rates</a>
           <a href="#archive">Archive</a>
-          <a href="#login">Login</a>
-          <a href="#open" className="cta">Open an Account →</a>
+          <a href="https://lk.get-due.com/login">Login</a>
+          <a href="https://lk.get-due.com/register" className="cta">Open an Account →</a>
         </div>
       </nav>
     </header>

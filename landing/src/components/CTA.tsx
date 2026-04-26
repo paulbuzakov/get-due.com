@@ -19,8 +19,8 @@ export function CTA() {
             we&apos;ll import it.
           </p>
           <div className="actions">
-            <a href="#" className="btn">Open an Account <span className="arrow">→</span></a>
-            <a href="#" className="btn btn-ghost">Read the Specimen</a>
+            <a href="https://lk.get-due.com/register" className="btn">Open an Account <span className="arrow">→</span></a>
+            <a href="https://lk.get-due.com/login" className="btn btn-ghost">Login</a>
           </div>
         </motion.div>
       </div>
