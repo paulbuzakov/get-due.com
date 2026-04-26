@@ -1,0 +1,68 @@
+services:
+  postgres:
+    container_name: get-due-database
+    image: postgres:16-alpine
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5432:5432"
+    environment:
+      POSTGRES_USER: getdue
+      POSTGRES_PASSWORD: getdue_dev
+      POSTGRES_DB: getdue
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U getdue -d getdue"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  api:
+    container_name: get-due-api
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:55001:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=getdue;Username=getdue;Password=getdue_dev"
+      Jwt__Secret: "docker-dev-secret-change-in-production-at-least-32-chars!!"
+      Jwt__Issuer: "GetDue.API"
+      Jwt__Audience: "GetDue.Frontend"
+      Jwt__ExpirationInMinutes: "60"
+      Jwt__RefreshTokenExpirationInDays: "7"
+      Cors__AllowedOrigins__0: "http://127.0.0.1:55002"
+      Cors__AllowedOrigins__1: "http://lk.get-due.com"
+
+  app:
+    container_name: get-due-app
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: /api
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:55002:3000"
+    depends_on:
+      - api
+    environment:
+      BACKEND_API_URL: http://api:5000/api
+
+  landing:
+    container_name: get-due-landing
+    build:
+      context: ./landing
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:55003:80"
+
+volumes:
+  postgres_data:

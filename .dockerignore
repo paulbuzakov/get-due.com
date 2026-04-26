@@ -1,0 +1,39 @@
+# Git
+.git
+.gitignore
+
+# GitHub
+.github
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backend
+backend/**/bin
+backend/**/obj
+backend/**/*.user
+
+# Frontend
+frontend/node_modules
+frontend/.next
+frontend/out
+frontend/.env*
+
+# Docker
+docker-compose*.yml
+**/Dockerfile
+
+# Docs
+**/*.md
+!backend/**/README.md
+LICENSE
+
+# Claude
+.claude

@@ -1,0 +1,82 @@
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE / Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+*.lscache
+*.log
+*.sln.docstates
+*.suo
+*.user
+*.userosscache
+*.sln.ide
+*.sln.cache
+*.sln.docstates
+*.sln.ide
+*.sln.cache
+*.sln.user
+*.sln.suo
+
+# .NET
+bin
+obj
+*.user
+*.suo
+.vs/
+publish/
+*.DotSettings.user
+
+# Node.js / Frontend
+node_modules/
+.next/
+out/
+build/
+.pnp
+.pnp.*
+.yarn/*
+.yarn/patches
+.yarn/plugins
+!frontend/.yarn/releases
+!frontend/.yarn/versions
+frontend/coverage/
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+dist
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Docker
+docker-compose.override.yml
+
+# Secrets / Credentials
+*.pem
+*.key
+*.pfx
+*.p12
+credentials.json
+
+# Testing
+**/TestResults/
+**/coverage/
